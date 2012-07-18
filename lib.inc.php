@@ -25,7 +25,7 @@ function extractTitle($site, $html) {
 
     } else if ($site === "mmail") {
 
-        $returnValue = strstr($returnValue, " | Malay Mail Online", TRUE);
+        $returnValue = strstr($returnValue, " | The Malay Mail", TRUE);
 
     } else if ($site === "bernama") {
 
@@ -35,7 +35,7 @@ function extractTitle($site, $html) {
 
     } else if ($site === "utusan") {
 
-        $returnValue = $h->find(".keydeck12 h3", 0)->plaintext;
+        $returnValue = $h->find("div.fullstory h3", 0)->plaintext;
 
     }
 
@@ -52,10 +52,10 @@ function extractContent($site, $html) {
     if ($site === "thestar") $obj = $h->find("#story_content", 0);
     else if ($site === "tmi") $obj = $h->find("#article", 0);
     else if ($site === "freemalaysiakini") $obj = $h->find("#innerLeft .post", 0);
-    else if ($site === "utusan") $obj = $h->find("#ContentContainer .keydeck12", 0);
-    else if ($site === "merdekareview-malay") $obj = $h->find("#news_content2 td", 0);
+    else if ($site === "utusan") $obj = $h->find("div.fullstory", 0);
+    else if ($site === "merdekareview-malay") $obj = $h->find("div.content", 0);
     else if ($site === "mmail") $obj = $h->find("#content-area", 0);
-    else if ($site === "bernama") $obj = $h->find("#newsContainer2", 0);
+    else if ($site === "bernama") $obj = $h->find("p#news", 0);
 
     if ($obj === null) return FALSE;
 

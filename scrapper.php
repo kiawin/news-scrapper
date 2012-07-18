@@ -61,9 +61,10 @@ while (TRUE) {
 
                 bullets("Retrieving HTML from $link");
 
-                $html = @file_get_contents($link);
+                $html = file_get_contents($link);
 
-                if ($site === "utusan") $html = iconv('ISO-8859-15', 'UTF-8//IGNORE', $html);
+                if ($site === "utusan" || $site === "thestar") $html = iconv('ISO-8859-15', 'UTF-8//IGNORE', $html);
+                else if ($site === "bernama") $html = iconv('ISO-8859-1', 'UTF-8//IGNORE', $html);
                 else $html = iconv('', 'UTF-8//IGNORE', $html);
 
                 if ($html === FALSE) {
